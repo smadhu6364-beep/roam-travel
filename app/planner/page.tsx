@@ -34,15 +34,15 @@ export default function PlannerPage() {
               <CardContent className="space-y-2 text-sm">
                 <div className="flex items-center justify-between">
                   <span>Flights</span>
-                  <span>$—</span>
+                  <span>TBD</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Hotels</span>
-                  <span>$—</span>
+                  <span>TBD</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Activities</span>
-                  <span>$—</span>
+                  <span>TBD</span>
                 </div>
                 <a
                   href="/booking/review"
