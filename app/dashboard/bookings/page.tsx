@@ -13,13 +13,13 @@ export default function BookingHistoryPage() {
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
               <div className="flex items-center justify-between rounded border p-3">
-                <span>Tokyo Hotel — Check-in Oct 3</span>
+                <span>Tokyo Hotel: check-in Oct 3</span>
                 <a href="#" className="text-sky-600">
                   View
                 </a>
               </div>
               <div className="flex items-center justify-between rounded border p-3">
-                <span>Flight — Oct 2</span>
+                <span>Flight: Oct 2</span>
                 <a href="#" className="text-sky-600">
                   Details
                 </a>
@@ -32,13 +32,13 @@ export default function BookingHistoryPage() {
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
               <div className="flex items-center justify-between rounded border p-3">
-                <span>Paris — May 2025</span>
+                <span>Paris, May 2025</span>
                 <a href="#" className="text-sky-600">
                   Receipt
                 </a>
               </div>
               <div className="flex items-center justify-between rounded border p-3">
-                <span>New York — Jan 2025</span>
+                <span>New York, Jan 2025</span>
                 <a href="#" className="text-sky-600">
                   Invoice
                 </a>

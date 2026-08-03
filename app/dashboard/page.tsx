@@ -11,7 +11,7 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Upcoming Trip</CardTitle>
             </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">Tokyo — 7 days — In planning</CardContent>
+            <CardContent className="text-sm text-muted-foreground">Tokyo, 7 days, in planning</CardContent>
           </Card>
           <Card>
             <CardHeader>

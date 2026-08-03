@@ -31,7 +31,7 @@ export function SocialProof() {
                     <AvatarFallback>{t.name.slice(0, 2).toUpperCase()}</AvatarFallback>
                   </Avatar>
                   <blockquote className="text-sm text-muted-foreground">
-                    “{t.quote}”<figcaption className="mt-1 text-xs text-foreground">— {t.name}</figcaption>
+                    “{t.quote}”<figcaption className="mt-1 text-xs text-foreground">{t.name}</figcaption>
                   </blockquote>
                 </figure>
               ))}
