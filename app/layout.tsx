@@ -9,7 +9,6 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Roam — Plan. Explore. Experience.",
   description: "Plan trips with live budgets, expert tips, and secure bookings.",
-  generator: "v0.app",
 }
 
 export default function RootLayout({
