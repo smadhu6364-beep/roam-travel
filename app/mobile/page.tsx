@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset"
 import Shell from "@/components/site/shell"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -19,7 +20,7 @@ export default function MobileDownloadPage() {
             <div className="rounded-md border p-4">
               <p className="text-sm font-medium">Scan to download</p>
               <img
-                src="/qr-code-for-roam-app.png"
+                src={asset("/qr-code-for-roam-app.png")}
                 alt="QR code to download Roam app"
                 className="mt-2 h-40 w-40 rounded"
               />
@@ -35,7 +36,7 @@ export default function MobileDownloadPage() {
               <CardTitle>Preview</CardTitle>
             </CardHeader>
             <CardContent>
-              <img src="/mobile-app-screenshots-preview.png" alt="Roam app interface preview" className="w-full rounded" />
+              <img src={asset("/mobile-app-screenshots-preview.png")} alt="Roam app interface preview" className="w-full rounded" />
             </CardContent>
           </Card>
         </div>

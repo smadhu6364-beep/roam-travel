@@ -1,4 +1,5 @@
 "use client"
+import { asset } from "@/lib/asset"
 
 import { useMemo, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -61,7 +62,7 @@ export function Demo() {
               <div className="rounded-md border p-3 text-sm text-muted-foreground">
                 Map route planning:
                 <img
-                  src="/map-route-planning-preview.png"
+                  src={asset("/map-route-planning-preview.png")}
                   alt="Map route planning preview"
                   className="mt-2 w-full rounded"
                 />

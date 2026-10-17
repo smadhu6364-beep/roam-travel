@@ -1,9 +1,15 @@
+import { asset } from "@/lib/asset"
 import Shell from "@/components/site/shell"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function DestinationDetail({ params }: { params: { slug: string } }) {
-  const name = params.slug
+export function generateStaticParams() {
+  return ["tokyo", "paris", "bali", "new-york", "rome", "cape-town"].map((slug) => ({ slug }))
+}
+
+export default async function DestinationDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const name = slug
     .split("-")
     .map((s) => s[0]?.toUpperCase() + s.slice(1))
     .join(" ")
@@ -14,7 +20,7 @@ export default function DestinationDetail({ params }: { params: { slug: string }
           <h1 className="text-3xl font-bold">{name}</h1>
           <p className="text-sm text-muted-foreground">Best time, budget ranges, and trip duration at a glance.</p>
           <div className="rounded-md border">
-            <img src="/destination-hero-video-preview.png" alt={`${name} destination preview`} className="w-full rounded" />
+            <img src={asset("/destination-hero-video-preview.png")} alt={`${name} destination preview`} className="w-full rounded" />
           </div>
         </div>
 
@@ -34,7 +40,7 @@ export default function DestinationDetail({ params }: { params: { slug: string }
                   <CardTitle className="text-base">{h}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <img src="/highlight-image.png" alt={`${h} highlight`} className="w-full rounded" />
+                  <img src={asset("/highlight-image.png")} alt={`${h} highlight`} className="w-full rounded" />
                 </CardContent>
               </Card>
             ))}
@@ -60,7 +66,7 @@ export default function DestinationDetail({ params }: { params: { slug: string }
                   <CardTitle className="text-base">{t} Hotels</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <img src="/hotel-card-image.png" alt={`${t} hotels`} className="w-full rounded" />
+                  <img src={asset("/hotel-card-image.png")} alt={`${t} hotels`} className="w-full rounded" />
                 </CardContent>
               </Card>
             ))}

@@ -1,55 +1,92 @@
-# Roam: Plan. Explore. Experience.
+# Roam
 
-A trip-planning and booking UI built with Next.js 15, React 19, and TypeScript. Roam lets a traveller browse destinations, build an itinerary, estimate costs, and walk through a booking flow from review to confirmation.
+**Plan. Explore. Experience.** A trip-planning and booking interface: browse destinations, build an itinerary, see the cost add up, and walk through checkout.
 
-**This is a frontend prototype.** The pages and components are fully built and interactive, but flight search, payments, and account data are not wired up to a live backend yet: there are no API routes in this project. Environment variables for a flight-data provider and a payments provider are scaffolded (see `.env.example`) for whoever picks this up to wire in.
+[![CI](https://github.com/smadhu6364-beep/roam-travel/actions/workflows/ci.yml/badge.svg)](https://github.com/smadhu6364-beep/roam-travel/actions/workflows/ci.yml)
+[![Deploy](https://github.com/smadhu6364-beep/roam-travel/actions/workflows/pages.yml/badge.svg)](https://smadhu6364-beep.github.io/roam-travel/)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=nextdotjs)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+
+**Live demo:** https://smadhu6364-beep.github.io/roam-travel/
+
+![Roam home page](docs/screenshot-home.png)
+
+> **Status: frontend prototype.** Every page and component is built and interactive, but flight search, payments and accounts are not connected to a backend. There are no API routes. The site is exported as static HTML.
 
 ## Features
 
-- Destination browsing with filters
-- Trip planner: itinerary builder, cost calculator, and an "expert review" panel
-- Booking flow: review, payment, and confirmation screens
-- User dashboard: bookings and profile pages
+- Destination browsing with search and filters (budget, season, activity)
+- Trip planner: itinerary builder, cost calculator and an "expert review" panel
+- Booking flow: review, payment and confirmation screens
+- User dashboard with bookings and profile pages
 - Auth screens: login, signup, password reset
-- Marketing and content pages: pricing, how-it-works, company (about, careers, investors, press, team), resources (travel guides, packing lists, news), legal (privacy, terms, cookies, cancellation), help and support
+- Content pages: pricing, how it works, company, resources, legal, help and support
+- Light and dark themes
 
-## Tech Stack
+![Trip planner](docs/screenshot-planner.png)
+
+## Tech stack
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 15 (App Router), React 19, TypeScript |
-| Styling | Tailwind CSS, tailwindcss-animate |
+| Framework | Next.js 16 (App Router, static export), React 19, TypeScript |
+| Styling | Tailwind CSS 4, tailwindcss-animate |
 | UI components | Radix UI primitives, shadcn/ui |
-| Forms & validation | React Hook Form, Zod |
+| Forms and validation | React Hook Form, Zod |
 | Charts | Recharts |
+| Hosting | GitHub Pages via GitHub Actions |
 
-## Setup
+## Quick start
 
-### Prerequisites
+Needs Node.js 20.9 or newer.
 
-- Node.js 18+ and npm (or pnpm)
+```bash
+git clone https://github.com/smadhu6364-beep/roam-travel.git
+cd roam-travel
+npm install
+npm run dev        # http://localhost:3000
+```
 
-### Steps
+Other scripts:
 
-1. Clone this repository: `git clone https://github.com/smadhu6364-beep/roam-travel.git`
-2. Go to the project directory
-3. Install dependencies: `npm install`
-4. Copy `.env.example` to `.env.local` and fill in real values for anything you want to actually wire up (see below)
-5. Run the dev server: `npm run dev`
-6. Open `http://localhost:3000`
+```bash
+npm run typecheck  # tsc --noEmit
+npm run build      # static export into out/
+```
 
-### Environment Variables
+## Environment variables
 
-`.env.example` lists the variables the project is scaffolded for. None of these are required to run the UI as-is; they matter only once real integrations are wired in.
+None are needed to run the UI. `.env.example` lists placeholders for integrations that are not wired in yet:
 
-| Variable | Description |
-|---|---|
-| `AMADEUS_CLIENT_ID` / `AMADEUS_CLIENT_SECRET` | Credentials for the Amadeus flight-data API, for live flight search |
-| `DATABASE_URL` | Database connection string (defaults to a local SQLite file for development) |
-| `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | Stripe credentials, for real payment processing |
-| `YOUTUBE_API_KEY` | Optional, for video previews |
-| `NEXT_PUBLIC_APP_URL` | Base URL of the app |
+- `AMADEUS_CLIENT_ID`, `AMADEUS_CLIENT_SECRET` (flight data)
+- `DATABASE_URL`
+- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` (payments)
+- `YOUTUBE_API_KEY` (optional video previews)
+- `NEXT_PUBLIC_APP_URL`
+- `NEXT_PUBLIC_BASE_PATH` (only when serving from a subfolder, as on GitHub Pages)
 
-### A note on this repository
+## Project structure
 
-The local copy of this project had a live Amadeus API client ID and secret sitting in a `roma.env.local` file that the original `.gitignore` did not actually exclude (it only matched filenames starting with a dot). That file, and those credentials, were not pushed here. `.gitignore` has been tightened to exclude any file matching `*.env*` or `*.local`, not just dotfiles. If those Amadeus credentials are still active, they should be rotated.
+```
+app/            routes (App Router): planner, destinations, booking, dashboard, auth, content pages
+components/
+  home/         landing page sections
+  planner/      itinerary builder, cost calculator, expert review
+  destinations/ filters
+  site/         nav, footer, page shell
+  ui/           shadcn/ui components
+hooks/, lib/    shared helpers
+public/         images
+```
+
+## Limitations
+
+- All data is hard-coded sample data; nothing is saved.
+- Login, signup and payment forms do not submit anywhere.
+- Images are placeholders.
+
+## A note on credentials
+
+An earlier local copy had live Amadeus API credentials in a `roma.env.local` file that the original `.gitignore` did not exclude. That file was never pushed here, and `.gitignore` now excludes every `.env*` file except `.env.example`. If those credentials are still active, they should be rotated.

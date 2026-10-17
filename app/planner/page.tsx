@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset"
 import Shell from "@/components/site/shell"
 import CostCalculator from "@/components/planner/cost-calculator"
 import ItineraryBuilder from "@/components/planner/itinerary-builder"
@@ -17,7 +18,7 @@ export default function PlannerPage() {
               <p>Weather: 22°C, sunny</p>
               <p>Tips: Buy transit pass, reserve popular spots.</p>
               <div className="rounded border p-2">
-                <img src="/detailed-city-map.png" alt="Map preview" className="w-full rounded" />
+                <img src={asset("/detailed-city-map.png")} alt="Map preview" className="w-full rounded" />
               </div>
             </CardContent>
           </Card>

@@ -1,4 +1,5 @@
 "use client"
+import { asset } from "@/lib/asset"
 
 import Shell from "@/components/site/shell"
 import { Input } from "@/components/ui/input"
@@ -46,14 +47,14 @@ export default function DestinationsPage() {
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {filtered.map((d) => (
-            <Card key={d.slug} asChild>
-              <Link href={`/destinations/${d.slug}`}>
+            <Link key={d.slug} href={`/destinations/${d.slug}`}>
+              <Card className="h-full transition-colors hover:border-primary">
                 <CardHeader>
                   <CardTitle className="text-base">{d.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <img
-                    src={`/abstract-geometric-shapes.png?height=140&width=360&query=${encodeURIComponent(d.name)}%20city%20image`}
+                    src={asset(`/abstract-geometric-shapes.png?height=140&width=360&query=${encodeURIComponent(d.name)}%20city%20image`)}
                     alt={`${d.name} city`}
                     className="w-full rounded"
                   />
@@ -61,8 +62,8 @@ export default function DestinationsPage() {
                     {d.budget[0]?.toUpperCase() + d.budget.slice(1)} • {d.season} • {d.activity}
                   </p>
                 </CardContent>
-              </Link>
-            </Card>
+              </Card>
+            </Link>
           ))}
         </div>
       </section>
